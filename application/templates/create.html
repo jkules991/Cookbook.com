@@ -8,22 +8,15 @@
 <div class="form">
     <form method='POST' action=''>
         {{ jirecipe_n.hidden_tag() }}
-        {{ jirecipe_n.name.label }} {{ jirecipe_n.name }}
+        {{ jirecipe_n.name_form.label }} {{ jirecipe_n.name_form }}
         <br><br>
-        {{ jirecipe_n.hidden_tag() }}
-        {{ jirecipe_n.ingredients.label }} {{ jirecipe_n.ingredients }}
+        {{ jirecipe_n.prep_t_form.label }} {{ jirecipe_n.prep_t_form }}
         <br><br>
-        {{ jirecipe_n.hidden_tag() }}
-        {{ jirecipe_n.portions.label }} {{ jirecipe_n.portions }}
+        {{ jirecipe_n.cook_t_form.label }} {{ jirecipe_n.cook_t_form }}
         <br><br>
-        {{ jirecipe_n.hidden_tag() }}
-        {{ jirecipe_n.prep_time.label }} {{ jirecipe_n.prep_time }}
-        <br><br>
-        {{ jirecipe_n.hidden_tag() }}
-        {{ jirecipe_n.instructions.label }} {{ jirecipe_n.instructions }}
+        {{ jirecipe_n.ingredients_form.label }} {{ jirecipe_n.ingredients_form }}
         <br><br>
         {{ jirecipe_n.submit }}
-        <br><br>
         
 
     </body>
