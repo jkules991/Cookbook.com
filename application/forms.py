@@ -9,7 +9,7 @@ class RnameForm(FlaskForm):
     submit = SubmitField("Submit")
 
 class RprepForm(FlaskForm):
-    cook_method_form = StringField("How long to cook:")
-    prep_method_form = StringField("How long to prepare:")
+    cook_method_form = StringField("Cooking instructions:")
+    prep_method_form = StringField("Preparation:")
     portions_form = StringField("How many portions:")
     submit = SubmitField("Submit")

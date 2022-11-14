@@ -38,12 +38,14 @@ def create_page():
 @app.route('/create2', methods=["GET","POST"])
 def create_page2():
     pyprep= RprepForm()
+    rec= Recipes.query.order_by(Recipes.id.desc()).first()
     #Take input from POST
     if request.method == 'POST':
         if pyprep.validate_on_submit():
                 addInstructions = Instructions(portions=pyprep.portions_form.data, 
                 prep_method=pyprep.prep_method_form.data,
                 cook_method=pyprep.cook_method_form.data,
+                recipe_id= rec.id
                 )
                 db.session.add(addInstructions)
                 db.session.commit()
