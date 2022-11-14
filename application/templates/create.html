@@ -3,5 +3,28 @@
         <h1>
            Create Recipe
         </h1>
+
+<!-- Input here-->
+<div class="form">
+    <form method='POST' action=''>
+        {{ jirecipe_n.hidden_tag() }}
+        {{ jirecipe_n.name.label }} {{ jirecipe_n.name }}
+        <br><br>
+        {{ jirecipe_n.hidden_tag() }}
+        {{ jirecipe_n.ingredients.label }} {{ jirecipe_n.ingredients }}
+        <br><br>
+        {{ jirecipe_n.hidden_tag() }}
+        {{ jirecipe_n.portions.label }} {{ jirecipe_n.portions }}
+        <br><br>
+        {{ jirecipe_n.hidden_tag() }}
+        {{ jirecipe_n.prep_time.label }} {{ jirecipe_n.prep_time }}
+        <br><br>
+        {{ jirecipe_n.hidden_tag() }}
+        {{ jirecipe_n.instructions.label }} {{ jirecipe_n.instructions }}
+        <br><br>
+        {{ jirecipe_n.submit }}
+        <br><br>
+        
+
     </body>
 </html>
