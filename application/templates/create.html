@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <h1>
+           Create Recipe
+        </h1>
+
+<!-- Input here-->
+<div class="form">
+    <form method='POST' action=''>
+        {{ jirecipe_n.hidden_tag() }}
+        {{ jirecipe_n.name_form.label }} {{ jirecipe_n.name_form }}
+        <br><br>
+        {{ jirecipe_n.prep_t_form.label }} {{ jirecipe_n.prep_t_form }}
+        <br><br>
+        {{ jirecipe_n.cook_t_form.label }} {{ jirecipe_n.cook_t_form }}
+        <br><br>
+        {{ jirecipe_n.ingredients_form.label }} {{ jirecipe_n.ingredients_form }}
+        <br><br>
+        {{ jirecipe_n.submit }}
+        
+
+    </body>
+</html>

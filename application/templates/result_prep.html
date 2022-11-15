@@ -1,0 +1,28 @@
+<html>
+    <body>
+
+        Enter Preparation time:
+        <div class="form">
+            <form method='POST' action=''>
+                {{ jires.hidden_tag() }}
+                {{ jires.prep_t_res.label }} {{ jires.prep_t_res }}
+                <br><br>
+                {{ jires.submit }}
+                
+                {% for recipe in jyres_prep %}
+                    <h3>Recipe name is: {{  recipe.r_name }}</h3>
+                
+                    <h4>The ingredients are: {{ recipe.ingredients }}</h4>
+                    <h4>Time to prep: {{ recipe.prep_t }}</h4>
+                    <h4>Time to cook: {{ recipe.cook_t }}</h4>
+                    {% for instruction in recipe.rec_inst %}
+                        <h4>Serves: {{instruction.portions}}</h4>
+                        <h4>Preparation Instructions: {{instruction.prep_method}}</h4>
+                        <h4>Cooking Instructions: {{instruction.cook_method}}</h4>
+                        {% endfor %}
+                        <h4>--------------------------------------------------------</h4>
+                    {% endfor %}
+                    
+
+    </body>
+</html>

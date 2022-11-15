@@ -1,0 +1,41 @@
+<html>
+    <body>
+
+
+        <h3>
+        Enter Name of recipe:
+        </h3>
+        <div class="form">
+            <form method='POST' action=''>
+                {{ jires.hidden_tag() }}
+                {{ jires.name_res.label }} {{ jires.name_res }}
+                <br><br>
+                {{ jires.submit }}
+
+                {% for recipe in jiresname %}
+
+                    <h3>Recipe name is: {{  recipe.r_name }}</h3>
+                
+                    <h4>The ingredients are: {{ recipe.ingredients }}</h4>
+                    <h4>Time to prep: {{ recipe.prep_t }}</h4>
+                    <h4>Time to cook: {{ recipe.cook_t }}</h4>
+                    
+                    {% for instruction in recipe.rec_inst %}
+                        <h4>Serves: {{instruction.portions}}</h4>
+                        <h4>Preparation Instructions: {{instruction.prep_method}}</h4>
+                        <h4>Cooking Instructions: {{instruction.cook_method}}</h4>
+                        {% endfor %}
+                        <button>
+                            <a href = "{{url_for('delete_page',num=recipe.id)}}">
+                              Delete
+                            </a>
+                        </button>
+                        
+                        <h4>--------------------------------------------------------</h4>
+                    {% endfor %}
+
+                
+
+    </body>
+</html>
+

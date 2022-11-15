@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <h1>
+           Search for Recipe
+        </h1>
+
+        <h3>
+            Search by:
+            <div class='form'>
+                <form method='POST' action=''>
+                    {{ jisearchField.hidden_tag() }}
+                    {{ jisearchField.label}} {{jisearchField.list}}
+                    {{ jisearchField.submit }}
+        </h3>
+    </body>
+</html>
