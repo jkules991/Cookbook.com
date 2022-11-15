@@ -13,6 +13,7 @@
                 {{ jires.submit }}
 
                 {% for recipe in jiresname %}
+
                     <h3>Recipe name is: {{  recipe.r_name }}</h3>
                 
                     <h4>The ingredients are: {{ recipe.ingredients }}</h4>
@@ -24,6 +25,12 @@
                         <h4>Preparation Instructions: {{instruction.prep_method}}</h4>
                         <h4>Cooking Instructions: {{instruction.cook_method}}</h4>
                         {% endfor %}
+                        <button>
+                            <a href = "{{url_for('delete_page',num=recipe.id)}}">
+                              Delete
+                            </a>
+                        </button>
+                        
                         <h4>--------------------------------------------------------</h4>
                     {% endfor %}
 

@@ -111,3 +111,11 @@ def result_portions():
             recipe= [res.recipes for res in res_portion]
             return render_template('result_portions.html',jires_portion=res_portion, jires=pyres, recipe=recipe)
     return render_template('result_portions.html', jires=pyres)
+
+@app.route('/delete<num>', methods=["GET","POST"])
+def delete_page(num):
+    return "delete"
+
+@app.route('/delete<num>', methods=["GET","POST"])
+def edit_page(num):
+    return "edit"
