@@ -2,7 +2,7 @@ from application import app, db
 from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from application.forms import RnameForm, RprepForm, SearchForm
+from application.forms import RnameForm, RprepForm, SearchForm, ResForm
 from application.models import Recipes, Instructions
 
 # creates home page
@@ -54,13 +54,61 @@ def search_page():
     pysearchField= SearchForm()
     if request.method == 'POST':
         if pysearchField.validate_on_submit():
-            s_name= pysearchField.s_name_form.data
-            prep_d= pysearchField.s_prep_t_form.data
-            cook_d= pysearchField.s_cook_t_form.data
-            # portion_c= pysearchField.s_portions_form.data
-            if s_name != "" and prep_d >= 1 and cook_d >=1:
-                s_result= Recipes.query.filter_by(r_name=s_name, prep_t=prep_d, cook_t=cook_d).first()
+            choice_r=pysearchField.list.data
+            if choice_r == "Name":
+                return redirect(url_for('result_name'))
 
-                return s_result.r_name
+            elif choice_r == "Preparation time":
+                return redirect(url_for('result_prep'))
 
+            elif choice_r == "Cooking time":
+                return redirect(url_for('result_cook'))
+
+            elif choice_r == "Number of portions":
+                return redirect(url_for('result_portions'))
+                
+            else:
+                return "Invalid Option"
+
+            
     return render_template('search.html', jisearchField=pysearchField)
+
+@app.route('/search/result_name', methods=["GET","POST"])
+def result_name():
+    pyres= ResForm()
+    if request.method == 'POST':
+        if pyres.validate_on_submit():
+            src_name=pyres.name_res.data
+            res_name= Recipes.query.filter_by(r_name=src_name).all()
+            return render_template('result_name.html',jiresname=res_name, jires=pyres)
+    return render_template('result_name.html', jires=pyres)
+
+@app.route('/search/result_prep', methods=["GET","POST"])
+def result_prep():
+    pyres= ResForm()
+    if request.method == 'POST':
+        if pyres.validate_on_submit():
+            src_prep=pyres.prep_t_res.data
+            res_prep= Recipes.query.filter_by(prep_t=src_prep).all()
+            return render_template('result_prep.html',jyres_prep=res_prep, jires=pyres)
+    return render_template('result_prep.html', jires=pyres)
+
+@app.route('/search/result_cook', methods=["GET","POST"])
+def result_cook():
+    pyres= ResForm()
+    if request.method == 'POST':
+        if pyres.validate_on_submit():
+            src_cook=pyres.cook_t_res.data
+            res_cook= Recipes.query.filter_by(cook_t=src_cook).all()
+            return render_template('result_cook.html',jyres_cook=res_cook, jires=pyres)
+    return render_template('result_cook.html', jires=pyres)
+
+@app.route('/search/result_portions', methods=["GET","POST"])
+def result_portions():
+    pyres= ResForm()
+    if request.method == 'POST':
+        if pyres.validate_on_submit():
+            src_portion=pyres.portions_res.data
+            res_portion= Instructions.query.filter_by(portions=src_portion).all()
+            return render_template('result_portions.html',jyres_portion=res_portion, jires=pyres)
+    return render_template('result_portions.html', jires=pyres)

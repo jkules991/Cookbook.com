@@ -15,8 +15,12 @@ class RprepForm(FlaskForm):
     submit = SubmitField("Submit")
 
 class SearchForm(FlaskForm):
-    s_name_form= StringField("Recipe Name:")
-    s_prep_t_form = IntegerField("How long to prepare (minutes):")
-    s_cook_t_form = IntegerField("How long to cook (minutes):")
-    s_portions_form = IntegerField("How many portions:")
+    list = SelectField("Search by: ", choices=['--Choose Option--','Name','Preparation time','Cooking time','Number of portions'])
+    submit = SubmitField("Submit")
+
+class ResForm(FlaskForm):
+    name_res = StringField("Recipe Name:")
+    prep_t_res = IntegerField("How long to prepare (minutes):")
+    cook_t_res = IntegerField("How long to cook (minutes):")
+    portions_res = IntegerField("How many portions:")
     submit = SubmitField("Submit")
