@@ -62,11 +62,9 @@ def search_page():
                 return redirect(url_for('result_prep'))
 
             elif choice_r == "Cooking time":
-                return redirect(url_for('result_cook'))
-
+                return redirect(url_for('result_cook'))  
             elif choice_r == "Number of portions":
-                return redirect(url_for('result_portions'))
-                
+                return redirect(url_for('result_portions'))              
             else:
                 return "Invalid Option"
 
@@ -110,5 +108,6 @@ def result_portions():
         if pyres.validate_on_submit():
             src_portion=pyres.portions_res.data
             res_portion= Instructions.query.filter_by(portions=src_portion).all()
-            return render_template('result_portions.html',jyres_portion=res_portion, jires=pyres)
+            recipe= [res.recipes for res in res_portion]
+            return render_template('result_portions.html',jires_portion=res_portion, jires=pyres, recipe=recipe)
     return render_template('result_portions.html', jires=pyres)
