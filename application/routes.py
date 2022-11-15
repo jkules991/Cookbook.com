@@ -2,7 +2,7 @@ from application import app, db
 from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from application.forms import RnameForm, RprepForm
+from application.forms import RnameForm, RprepForm, SearchForm
 from application.models import Recipes, Instructions
 
 # creates home page
@@ -10,11 +10,6 @@ from application.models import Recipes, Instructions
 @app.route('/home', methods=["GET"])
 def home_page():
     return render_template('homepage.html')
-
-    
-@app.route('/search', methods=["GET","POST"])
-def search_page():
-    return render_template('search.html')
 
 @app.route('/create', methods=["GET","POST"])
 def create_page():
@@ -54,3 +49,18 @@ def create_page2():
 
     return render_template('create2.html', jiprep=pyprep)
 
+@app.route('/search', methods=["GET","POST"])
+def search_page():
+    pysearchField= SearchForm()
+    if request.method == 'POST':
+        if pysearchField.validate_on_submit():
+            s_name= pysearchField.s_name_form.data
+            prep_d= pysearchField.s_prep_t_form.data
+            cook_d= pysearchField.s_cook_t_form.data
+            # portion_c= pysearchField.s_portions_form.data
+            if s_name != "" and prep_d >= 1 and cook_d >=1:
+                s_result= Recipes.query.filter_by(r_name=s_name, prep_t=prep_d, cook_t=cook_d).first()
+
+                return s_result.r_name
+
+    return render_template('search.html', jisearchField=pysearchField)

@@ -3,5 +3,21 @@
         <h1>
            Search for Recipe
         </h1>
+
+        <h3>
+            Search by:
+            <div class='form'>
+                <form method='POST' action=''>
+                    <br><br>
+                    {{ jisearchField.hidden_tag() }}
+                    {{ jisearchField.s_name_form.label() }} {{ jisearchField.s_name_form}}
+                    <br><br>
+                    {{ jisearchField.s_prep_t_form.label() }} {{ jisearchField.s_prep_t_form}}
+                    <br><br>
+                    {{ jisearchField.s_cook_t_form.label() }} {{ jisearchField.s_cook_t_form}}
+                    <br><br>
+                    <!-- {{ jisearchField.s_portions_form.label() }} {{ jisearchField.s_portions_form}} -->
+                    {{ jisearchField.submit }}
+        </h3>
     </body>
 </html>
