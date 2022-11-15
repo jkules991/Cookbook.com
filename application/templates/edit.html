@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <h1>
+           Edit Recipe
+        </h1>
+
+<!-- Input here-->
+<div class="form">
+    <form method='POST' action=''>
+        {{ jiedit.hidden_tag() }}
+        {{ jiedit.name_edit_form.label }} {{ jiedit.name_edit_form }}
+        <br><br>
+        {{ jiedit.ing_edit_form.label }} {{ jiedit.ing_edit_form }}
+        <br><br>
+        {{ jiedit.prep_edit_form.label }} {{ jiedit.prep_edit_form }}
+        <br><br>
+        {{ jiedit.cook_edit_form.label }} {{ jiedit.cook_edit_form }}
+        <br><br>
+        {{ jiedit.portions_edit_form.label }} {{ jiedit.portions_edit_form }}
+        <br><br>
+        {{ jiedit.cook_method_edit_form.label }} {{ jiedit.cook_method_edit_form }}
+        <br><br>
+        {{ jiedit.prep_method_edit_form.label }} {{ jiedit.prep_method_edit_form }}
+        <br><br>
+        {{ jiedit.submit }}
+        
+
+    </body>
+</html>

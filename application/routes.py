@@ -2,7 +2,7 @@ from application import app, db
 from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from application.forms import RnameForm, RprepForm, SearchForm, ResForm
+from application.forms import RnameForm, RprepForm, SearchForm, ResForm, EditForm
 from application.models import Recipes, Instructions
 
 # creates home page
@@ -124,4 +124,55 @@ def delete_page(num):
 
 @app.route('/edit<num>', methods=["GET","POST"])
 def edit_page(num):
-    return "edit"
+    pyedit= EditForm()
+    #Take input from POST
+    if request.method == 'POST':
+        if pyedit.validate_on_submit():
+            og_recipe= Recipes.query.filter_by(id=num).first()
+            og_instructions= Instructions.query.filter_by(recipe_id=num)
+
+            new_name=pyedit.name_edit_form.data
+            new_ing=pyedit.ing_edit_form.data
+            new_prep=pyedit.prep_edit_form.data
+            new_cook=pyedit.cook_edit_form.data
+            new_c_method=pyedit.cook_method_edit_form.data
+            new_p_method=pyedit.prep_method_edit_form.data
+            new_portions=pyedit.portions_edit_form.data
+
+            if new_name != "":
+                og_recipe.r_name= new_name
+                db.session.commit()
+
+            if new_ing !="":
+                og_recipe.ingredients= new_ing
+                db.session.commit()
+
+            if new_prep > 0:
+                og_recipe.prep_t= new_prep
+                db.session.commit()
+
+            if new_cook > 0:
+                og_recipe.cook_t= new_cook
+                db.session.commit()
+
+            if new_portions > 0:
+                og_instructions.portions= new_portions
+                db.session.commit()
+
+            if new_c_method != "":
+                og_instructions.cook_method= new_c_method
+                db.session.commit()
+
+            if new_p_method !="":
+                og_instructions.prep_method= new_p_method
+                db.session.commit()
+
+            else:
+                return "No valid input"
+
+
+
+                return render_template('edit.html', jiedit=pyedit)
+
+    return render_template('edit.html', jiedit=pyedit)
+    
