@@ -114,8 +114,14 @@ def result_portions():
 
 @app.route('/delete<num>', methods=["GET","POST"])
 def delete_page(num):
-    return "delete"
+    target1= Recipes.query.filter_by(id=num).first()
+    target2= Instructions.query.filter_by(recipe_id=num).first()
+    db.session.delete(target1)
+    db.session.delete(target2)
+    db.session.commit()
+    return f"Deleted {target1.r_name}"
+    
 
-@app.route('/delete<num>', methods=["GET","POST"])
+@app.route('/edit<num>', methods=["GET","POST"])
 def edit_page(num):
     return "edit"

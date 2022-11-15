@@ -23,6 +23,16 @@
                         <h4>Preparation Instructions: {{instruction.prep_method}}</h4>
                         <h4>Cooking Instructions: {{instruction.cook_method}}</h4>
                         {% endfor %}
+                        <button>
+                            <a href = "{{url_for('delete_page',num=recipe.id)}}">
+                              Delete
+                            </a>
+                        </button>
+                        <button>
+                            <a href = "{{url_for('edit_page',num=recipe.id)}}">
+                                  Edit
+                            </a>
+                        </button>
                         <h4>--------------------------------------------------------</h4>
                     {% endfor %}
 
