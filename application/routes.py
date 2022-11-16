@@ -170,9 +170,5 @@ def edit_page(num):
             else:
                 return "No valid input"
 
-
-
-                return render_template('edit.html', jiedit=pyedit)
-
     return render_template('edit.html', jiedit=pyedit)
     
