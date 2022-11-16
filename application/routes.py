@@ -121,7 +121,6 @@ def delete_page(num):
     db.session.commit()
     return f"Deleted {target1.r_name}"
     
-
 @app.route('/edit<num>', methods=["GET","POST"])
 def edit_page(num):
     pyedit= EditForm()
@@ -147,15 +146,15 @@ def edit_page(num):
                 og_recipe.ingredients= new_ing
                 db.session.commit()
 
-            if new_prep > 0:
+            if new_prep != None:
                 og_recipe.prep_t= new_prep
                 db.session.commit()
 
-            if new_cook > 0:
+            if new_cook != None:
                 og_recipe.cook_t= new_cook
                 db.session.commit()
 
-            if new_portions > 0:
+            if new_portions != None:
                 og_instructions.portions= new_portions
                 db.session.commit()
 
@@ -169,6 +168,8 @@ def edit_page(num):
 
             else:
                 return "No valid input"
+            
+        return redirect(url_for('home_page'))
 
     return render_template('edit.html', jiedit=pyedit)
     

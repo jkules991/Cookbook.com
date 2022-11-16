@@ -109,3 +109,24 @@ class TestAddIns(TestBase):
             follow_redirects=True
         )
         self.assertIn(b'Create2',response.data)
+        #fails because data from previous page required to add data: rec.id required
+
+#testing update functionality
+class TestAddEdit(TestBase):
+    def test_edit(self):
+        response = self.client.post(
+            url_for('edit_page', num=1 ),
+            data = dict(r_name="test1edit",
+            ingredients="testingedit",
+            prep_t=3,
+            cook_t=4),
+            follow_redirects=True
+        )
+
+# Testing delete functionality
+class TestDDelete(TestBase):
+    def test_delete(self):
+        response = self.client.post(
+            url_for('edit_page', num=1 ),
+            data= dict(target1=1, target2=1)
+        )
