@@ -30,7 +30,11 @@
                               Delete
                             </a>
                         </button>
-                        
+                        <button>
+                            <a href = "{{url_for('edit_page',num=recipe.id)}}">
+                                  Edit
+                            </a>
+                        </button>
                         <h4>--------------------------------------------------------</h4>
                     {% endfor %}
 

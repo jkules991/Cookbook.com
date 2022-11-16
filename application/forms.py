@@ -24,3 +24,14 @@ class ResForm(FlaskForm):
     cook_t_res = IntegerField("How long to cook (minutes):")
     portions_res = IntegerField("How many portions:")
     submit = SubmitField("Submit")
+
+class EditForm(FlaskForm):
+    name_edit_form = StringField("Recipe Name:")
+    ing_edit_form = StringField("Ingredients:")
+    prep_edit_form = IntegerField("How long to prepare (minutes):")
+    cook_edit_form = IntegerField("How long to cook (minutes):")
+    cook_method_edit_form = StringField("Cooking instructions:")
+    prep_method_edit_form = StringField("Preparation:")
+    portions_edit_form = IntegerField("How many portions:")
+    submit = SubmitField("Submit")
+
