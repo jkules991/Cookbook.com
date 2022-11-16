@@ -1,2 +1,0 @@
-# cookbook.com
-My Cookbook
